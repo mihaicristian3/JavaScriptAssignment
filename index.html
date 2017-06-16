@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+  <head>
+    <title>Contact Form</title>
+    <script type="text/javascript" src="http://code.angularjs.org/1.2.25/angular.min.js"></script>
+    <script type="text/javascript" src="js/modules/promise-tracker.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  </head>
+  <body class="container">
+  
+  <h2>Contact form</h2>
+
+
+  <div data-ng-controller="help">
+    <div id="messages" class="alert alert-success" data-ng-show="messages" data-ng-bind="messages"></div>
+    <div data-ng-show="progress.active()" style="color: red; font-size: 50px;">Sending&hellip;</div>
+    <form name="helpForm" novalidate role="form">
+      <div class="form-group">
+        <label for="name">First Name </label>
+        <span class="label label-danger" data-ng-show="submitted && helpForm.firstName.$error.required">Required!</span>
+        <input type="text" name="firstName" data-ng-model="firstName" class="form-control" required />
+      </div>
+        
+        <div class="form-group">
+        <label for="name">Last Name </label>
+        <span class="label label-danger" data-ng-show="submitted && helpForm.lastName.$error.required">Required!</span>
+        <input type="text" name="lastName" data-ng-model="lastName" class="form-control" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail address</label>
+        <span class="label label-danger" data-ng-show="submitted && helpForm.email.$error.required">Required!</span>
+        <span class="label label-danger" data-ng-show="submitted && helpForm.$error.email">Invalid email!</span>
+        <input type="email" name="email" data-ng-model="email" class="form-control" required />  
+      </div>
+
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <span class="label label-danger" data-ng-show="submitted && helpForm.phoneNumber.$error.required">Required!</span>
+          <input type="number" name="phoneNumber" data-ng-model="phoneNumber" class="form-control" required />
+      </div>
+
+      <div class="form-group">
+        <label for="comments">Comments</label>
+        <span class="label label-danger" data-ng-show="submitted && helpForm.comments.$error.required">Required!</span>
+        <textarea name="comments" data-ng-model="comments" class="form-control" required></textarea>
+      </div>
+
+      <button data-ng-disabled="progress.active()" data-ng-click="submit(helpForm)" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+
+  </body>
+</html>

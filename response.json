@@ -1,0 +1,7 @@
+angular.callbacks._0({ status : "OK"},  
+    {"firstName": "John"},
+    {"lastName": "Doe"},
+    {"email": "ab@yopmail.com"},
+    {"phoneNumber": "023803102"},
+    {"comments": "Hello Wolrd!"},)
+

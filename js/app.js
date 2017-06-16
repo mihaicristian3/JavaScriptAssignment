@@ -11,17 +11,12 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
   
     $scope.progress = promiseTracker();
 
-    // Form submit handler.
     $scope.submit = function(form) {
-      // Trigger validation flag.
       $scope.submitted = true;
-
-      // If form is invalid, return and let AngularJS show validation errors.
       if (form.$invalid) {
         return;
       }
 
-      // Default values for the request.
       var config = {
         params : {
           'callback' : 'JSON_CALLBACK',
@@ -33,7 +28,6 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
         },
       };
 
-      // Perform JSONP request.
         
       var $promise = $http.jsonp( "http://private-e2353-js8.apiary-mock.com/posttoform", 'response.json', config)
         .success(function(data, status, headers, config) {
@@ -56,13 +50,11 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
           $log.error(data);
         })
         .finally(function() {
-          // Hide status messages after three seconds.
           $timeout(function() {
             $scope.messages = null;
           }, 3000);
         });
 
-      // Track the request and show its progress to the user.
       $scope.progress.addPromise($promise);
     };
   });
